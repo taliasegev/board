@@ -29,7 +29,7 @@ $app = new Slim();
 $app->add(new Slim_Middleware_ContentTypes());
 
 // tasks
-$app->get('/teams/:teamId/tasks/', 'getTasks');
+$app->get('/tasks/', 'getTasks');
 $app->post('/tasks/', 'addTask');
 $app->put('/tasks/:guid', 'updateTask');
 $app->delete('/tasks/:guid', 'deleteTask');
@@ -39,10 +39,6 @@ $app->get('/teams/:teamId/tasks', 'getTasksForTeam');
 
 $app->run();
  
-function getTasks($teamId) {
-    $tasks = _getTasksForTeam($teamId);
-    echo json_encode($tasks);
-}
 
 function addTask()
 {
@@ -64,9 +60,9 @@ function deleteTask($guid){
 //    _deleteTask($guid);
 }
 
-function getTasksForTeam($teamId)
+function getTasks()
 {
-    $tasks = _getTasksForTeam($teamId);
+    $tasks = _getTasks();
     echo json_encode($tasks);
 }
 
